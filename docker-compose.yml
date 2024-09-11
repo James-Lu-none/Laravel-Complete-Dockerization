@@ -3,6 +3,7 @@ services:
 
     # PHP Service
     php:
+        container_name: php
         build:
             context: .
             target: php
@@ -22,6 +23,7 @@ services:
 
     # PHP Service
     websocket:
+        container_name: websocket
         build:
             context: .
             target: php
@@ -41,6 +43,7 @@ services:
 
     # Database Server
     database:
+        container_name: database
         image: mysql:8.0
         ports:
             -   3306:3306
@@ -54,6 +57,7 @@ services:
 
     # Redis Server
     redis:
+        container_name: redis
         image: redis:alpine
         command: redis-server --appendonly yes --requirepass  "${REDIS_PASSWORD}"
         ports:
@@ -61,6 +65,7 @@ services:
 
     # Queue Server
     queue:
+        container_name: queue
         build:
             context: .
             target: php
@@ -75,6 +80,7 @@ services:
 
     # Node Server
     node:
+        container_name: node
         build:
             context: .
             target: node
